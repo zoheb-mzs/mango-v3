@@ -1617,7 +1617,7 @@ fn unpack_dex_new_order_v3(
     .ok()?;
     let client_order_id = u64::from_le_bytes(client_order_id_bytes);
     let limit = u16::from_le_bytes(limit_arr);
-
+    let max_ts = i64::MAX;
     Some(serum_dex::instruction::NewOrderInstructionV3 {
         side,
         limit_price,
@@ -1627,6 +1627,7 @@ fn unpack_dex_new_order_v3(
         order_type,
         client_order_id,
         limit,
+        max_ts
     })
 }
 
